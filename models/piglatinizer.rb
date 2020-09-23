@@ -11,8 +11,14 @@ class PigLatinizer
     latinized_word
   end
 
-  def piglatinize_sentence(sentence)
-    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
+  def to_pig_latin(sentence)
+    words_in_sentence = sentence.split(" ")
+
+    pig_latinized_words = words_in_sentence.collect do |word|
+      self.piglatinize(word)
+    end
+
+    new_sentence = pig_latinized_words.join(" ")
   end
 
   def begins_with_vowel
